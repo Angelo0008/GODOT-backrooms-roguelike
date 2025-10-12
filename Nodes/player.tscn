@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ta5ynklk4l21"]
+[gd_scene load_steps=25 format=3 uid="uid://ta5ynklk4l21"]
 
 [ext_resource type="Script" uid="uid://1j7bs34w6ly8" path="res://Scripts/player.gd" id="1_hv3sw"]
 [ext_resource type="Texture2D" uid="uid://dawtykf2arb28" path="res://Assets/Character/Idle/Idle Down/Idle1.png" id="1_sfp35"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://6myihuheavak" path="res://Assets/Character/Walk/Walk Up/walk2.png" id="19_vuwr8"]
 [ext_resource type="Texture2D" uid="uid://ipoivks748q3" path="res://Assets/Character/Walk/Walk Up/walk3.png" id="20_srole"]
 [ext_resource type="Texture2D" uid="uid://dbgj0i3aavfch" path="res://Assets/Character/Walk/Walk Up/walk4.png" id="21_qftjl"]
+[ext_resource type="Texture2D" uid="uid://dta6j0j06o2sf" path="res://Assets/Shadows/Player Shadow/Shadow.png" id="22_ynwet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grb8b"]
 
@@ -113,9 +114,10 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("1_hv3sw")
-move_speed = 60.0
+move_speed = 90.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_grb8b")
@@ -125,3 +127,13 @@ sprite_frames = SubResource("SpriteFrames_aoxlc")
 animation = &"Walk Up"
 autoplay = "Idle Down"
 frame_progress = 0.549759
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.380392)
+position = Vector2(0, 22)
+scale = Vector2(0.546875, 0.359375)
+texture = ExtResource("22_ynwet")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+zoom = Vector2(3.055, 3.055)

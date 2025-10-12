@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://b3wvvp45c3d7f"]
+[gd_scene load_steps=8 format=4 uid="uid://b3wvvp45c3d7f"]
 
 [ext_resource type="PackedScene" uid="uid://ta5ynklk4l21" path="res://Nodes/player.tscn" id="1_kbxol"]
 [ext_resource type="Texture2D" uid="uid://cadxiqhabm1lg" path="res://Assets/Tileset/Backrooms/Backrooms Tileset 32x32.png" id="2_hqj3b"]
-[ext_resource type="Texture2D" uid="uid://dta6j0j06o2sf" path="res://Assets/Shadows/Player Shadow/Shadow.png" id="3_8waiu"]
 [ext_resource type="Texture2D" uid="uid://b0ryaldrysqk6" path="res://Assets/Portal/Portal.png" id="4_qmghb"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hqj3b"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8waiu"]
 texture = ExtResource("2_hqj3b")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
@@ -29,9 +28,9 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_8waiu"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_hqj3b")
+sources/0 = SubResource("TileSetAtlasSource_8waiu")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8waiu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qmghb"]
 texture = ExtResource("2_hqj3b")
 texture_region_size = Vector2i(32, 32)
 3:0/0 = 0
@@ -180,7 +179,7 @@ tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/2 = SubResource("TileSetAtlasSource_8waiu")
+sources/2 = SubResource("TileSetAtlasSource_qmghb")
 
 [node name="Node2D" type="Node2D"]
 
@@ -197,16 +196,3 @@ position = Vector2(25, -61)
 texture = ExtResource("4_qmghb")
 
 [node name="Player" parent="." instance=ExtResource("1_kbxol")]
-position = Vector2(0, 6)
-scale = Vector2(0.5, 0.5)
-move_speed = 90.0
-
-[node name="Shadow" type="Sprite2D" parent="Player"]
-modulate = Color(1, 1, 1, 0.380392)
-position = Vector2(0, 22)
-scale = Vector2(0.546875, 0.359375)
-texture = ExtResource("3_8waiu")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-scale = Vector2(2, 2)
-zoom = Vector2(3.055, 3.055)

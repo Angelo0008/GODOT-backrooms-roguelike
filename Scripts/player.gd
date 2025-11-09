@@ -24,11 +24,11 @@ func player_animation():
 	
 	if velocity.x > 0:
 		$AnimatedSprite2D.play("Walk Right")
-	elif velocity.x < 0:
-		$AnimatedSprite2D.play("Walk Left")
-	elif velocity.y > 0:
-		$AnimatedSprite2D.play("Walk Down")
-	elif velocity.y < 0:
-		$AnimatedSprite2D.play("Walk Up")
+	#elif velocity.x < 0:
+		#$AnimatedSprite2D.play("Walk Left")
+	#elif velocity.y > 0:
+		#$AnimatedSprite2D.play("Walk Down")
+	#elif velocity.y < 0:
+		#$AnimatedSprite2D.play("Walk Up")
 	if velocity == Vector2(0, 0):
 		$AnimatedSprite2D.play("Idle Down")

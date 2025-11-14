@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ta5ynklk4l21"]
+[gd_scene load_steps=13 format=3 uid="uid://ta5ynklk4l21"]
 
 [ext_resource type="Script" uid="uid://1j7bs34w6ly8" path="res://Scripts/player.gd" id="1_hv3sw"]
 [ext_resource type="Texture2D" uid="uid://vinm10r3tufo" path="res://Assets/Character 2/Walk/1.png" id="2_r4ynj"]
 [ext_resource type="Texture2D" uid="uid://bn6nhg6r7e8uv" path="res://Assets/Character 2/Walk/2.png" id="3_wmu34"]
 [ext_resource type="Texture2D" uid="uid://c62ye5jncqgv1" path="res://Assets/Character 2/Walk/3.png" id="4_0bouj"]
 [ext_resource type="Texture2D" uid="uid://dqb6mssd0jreo" path="res://Assets/Character 2/Walk/4.png" id="5_2hphp"]
+[ext_resource type="Texture2D" uid="uid://1v4uvs37vs4e" path="res://Assets/Weapons/Iron Sword.png" id="7_wmu34"]
 [ext_resource type="Texture2D" uid="uid://dta6j0j06o2sf" path="res://Assets/Shadows/Player Shadow/Shadow.png" id="22_ynwet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grb8b"]
@@ -52,6 +53,45 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_wmu34"]
+resource_name = "walk"
+length = 0.750025
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_r4ynj"), ExtResource("3_wmu34"), ExtResource("4_0bouj"), ExtResource("5_2hphp")]
+}
+
+[sub_resource type="Animation" id="Animation_0bouj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_r4ynj")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bouj"]
+_data = {
+&"RESET": SubResource("Animation_0bouj"),
+&"walk": SubResource("Animation_wmu34")
+}
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_hv3sw")
@@ -61,9 +101,13 @@ move_speed = 90.0
 shape = SubResource("RectangleShape2D_grb8b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_aoxlc")
-animation = &"Idle Down"
-autoplay = "Idle Down"
+animation = &"Walk Right"
+
+[node name="IronSword" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(11, -3)
+texture = ExtResource("7_wmu34")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.380392)
@@ -74,3 +118,11 @@ texture = ExtResource("22_ynwet")
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
 zoom = Vector2(3.62, 3.62)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0bouj")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r4ynj")

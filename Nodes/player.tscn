@@ -203,7 +203,6 @@ position = Vector2(4.38968, 8.44205)
 texture = ExtResource("8_0bouj")
 
 [node name="IronSword" type="Sprite2D" parent="Sprite2D/RightHand"]
-visible = false
 position = Vector2(4.69124, -6.42067)
 rotation = -0.283306
 scale = Vector2(0.7, 0.7)
